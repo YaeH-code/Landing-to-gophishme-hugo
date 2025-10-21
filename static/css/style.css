@@ -84,7 +84,6 @@ body {
   text-decoration: none;
   background: #fff;
   color: #ff9d14 !important;
-  font-weight: 700 !important;
   transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.12s ease;
 }
 .btn-primary {
@@ -112,32 +111,39 @@ body {
 .hero {
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 2rem 0;
+  justify-content: center; /* Center content horizontally */
   background: linear-gradient(180deg, #fff, #f3f4f6);
-}
-.hero h2 {
-  margin-bottom: 0.75rem;
-  font-size: 2rem;
-  line-height: 1.2;
-}
-.hero .container {
-  flex: 1; /* Take available width */
-  max-width: 600px; /* Limit width */
+  gap: 0.5rem; /* Space between text and image */
+  flex-wrap: wrap;
 }
 
-.hero img {
-  flex: 1; /* Take available width */
-  max-width: 400px; /* Limit image width */
-  height: auto; /* Keep aspect ratio */
-  margin-right: 10rem; /* Space between text and image */
+.hero .container {
+  flex: 1 1 50%; /* Take half of hero space */
+  max-width: 600px;
+  text-align: left;
 }
-.lead {
+
+.hero h2 {
+  font-size: 2.2rem;
+  line-height: 1.3;
+  margin-bottom: 1rem;
+}
+
+.hero .lead {
   color: #555;
   font-size: 1.1rem;
   margin-bottom: 1.5rem;
-  max-width: 600px;
 }
+
+.hero img {
+  flex: 1 1 50%; /* Take half of hero space */
+  max-width: 500px;
+  margin-right: 15rem;
+  margin-bottom: 1.5rem;
+  height: auto;
+  display: block;
+}
+
 .section {
   padding: 3rem 0;
 }
@@ -186,9 +192,17 @@ body {
 }
 
 /*responsive*/
+@media (max-width: 1580px) {
+  .hero img {
+    margin-right: 0rem;
+  }
+}
 @media (max-width: 1024px) {
   :root {
     --container: 90vw;
+  }
+  .header {
+    height: 250px;
   }
   .hero {
     padding: 3rem 1rem;
@@ -216,11 +230,31 @@ body {
   .lead {
     font-size: 1rem;
   }
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+  .hero .container {
+    text-align: center;
+    max-width: 90%;
+  }
+
+  .hero img {
+    max-width: 80%;
+    margin-right: 0rem;
+  }
   .features-grid {
     grid-template-columns: 1fr;
   }
+  .header {
+    height: 280px;
+  }
   .header-inner {
     text-align: center;
+  }
+  .nav a.btn {
+    width: auto;
   }
   .btn {
     width: 100%;
